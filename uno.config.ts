@@ -14,7 +14,7 @@ export default defineConfig({
 				rubik: [
 					{
 						name: 'Rubik',
-						weights: ['400', '500', '700'],
+						weights: [ '400', '500', '700' ],
 						italic: true
 					},
 					{
@@ -25,7 +25,7 @@ export default defineConfig({
 				karla: [
 					{
 						name: 'Karla',
-						weights: ['400', '500', '700'],
+						weights: [ '400', '500', '700' ],
 						italic: true
 					},
 					{
@@ -36,8 +36,8 @@ export default defineConfig({
 			}
 		})
 	],
-	extractors: [extractorSvelte(), presetMini()],
-	transformers: [transformerDirectives() as any],
+	extractors: [ extractorSvelte(), presetMini() ],
+	transformers: [ transformerDirectives() as any ],
 	theme: {
 		colors: {
 			grey: {
@@ -50,22 +50,32 @@ export default defineConfig({
 				'200': '#E7E8E8',
 				'100': '#F8F8FA'
 			},
-			white: '#FFFFFF',
-			red: '#FF6666'
+			"white": "#FFFFFF",
+			"red": "#FF6666",
+			"purple": "#C3C9FF",
 		}
 	},
-	shortcuts: {
-		'karla-regular': 'font-karla font-normal',
-		'karla-medium': 'font-karla font-medium',
-		'karla-bold': 'font-karla font-bold',
-		'rubik-regular': 'font-rubik font-normal',
-		'rubik-medium': 'font-rubik font-medium',
-		'rubik-bold': 'font-rubik font-bold',
-		'flex-center': 'flex justify-center items-center',
-		'flex-between': 'flex justify-between items-center',
-		'flex-col-center': 'flex flex-col justify-center items-center',
-		'flex-col-between': 'flex flex-col justify-between items-center'
-	},
+	shortcuts: [
+		{ "karla-regular": "font-karla font-normal" },
+		{ "karla-medium": "font-karla font-medium" },
+		{ "karla-bold": "font-karla font-bold" },
+		{ "rubik-regular": "font-rubik font-normal" },
+		{ "rubik-medium": "font-rubik font-medium" },
+		{ "rubik-bold": "font-rubik font-bold" },
+		{ "flex-center": "flex justify-center items-center" },
+		{ "flex-between": "flex justify-between items-center" },
+		{ "flex-col-center": "flex flex-col justify-center items-center" },
+		{ "flex-col-between": "flex flex-col justify-between items-center" },
+		{ "flex-col-start": "flex flex-col justify-start items-start" },
+		{ "flex-col-end": "flex flex-col justify-end items-end" },
+		{ "text-linear-purple-100": "text-transparent bg-clip-text inline-block bg-gradient-to-r from-[#beb2f7] to-[#8d79ee] to-90%" },
+		{ "text-linear-green": "text-transparent bg-clip-text inline-block bg-gradient-to-r from-[#40ae5f] to-[#4f7953] to-90%" },
+		[ /^rubik-(regular|bold|medium)-(xs|sm|base|lg|xl|2xl|3xl|4xl|5xl|6xl|7xl|8xl|9xl)$/,
+			([ , fontWeight, textSize ]) => `rubik-${fontWeight} ls--0.5px text-${textSize}`, ],
+		[ /^karla-(regular|bold|medium)-(xs|sm|base|lg|xl|2xl|3xl|4xl|5xl|6xl|7xl|8xl|9xl)$/,
+			([ , fontWeight, textSize ]) => `karla-${fontWeight} ls--0.5px text-${textSize}`, ]
+
+	],
 	rules: [
 		[
 			'container',
@@ -103,6 +113,6 @@ export default defineConfig({
 				'border-image-slice': '2'
 			}
 		],
-		[/^ls-(-?[\d.]+)(px|em|rem)$/, (match) => ({ 'letter-spacing': `${match[1]}${match[2]}` })]
+		[ /^ls-(-?[\d.]+)(px|em|rem)$/, (match) => ({ 'letter-spacing': `${match[ 1 ]}${match[ 2 ]}` }) ]
 	]
 });
